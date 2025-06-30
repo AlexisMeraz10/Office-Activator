@@ -4,7 +4,7 @@ if not exist ospp.vbs (
     cd /d "%ProgramFiles(x86)%\Microsoft Office\Office16"
 )
 if not exist ospp.vbs (
-    echo Didnt found ospp.vbs in the common paths
+    echo Didnt find ospp.vbs in the common paths
     pause
     exit /b
 )
@@ -15,14 +15,14 @@ for /f "tokens=*" %%A in ('cscript //nologo ospp.vbs /dstatus ^| findstr /i "Las
     set "key=!line:~-5!"
 )
 
-:: Checks if obtained the value
+:: Checks if the value is obtained
 if "%key%"=="" (
     echo Cannot obtain the installed key
     pause
     exit /b
 )
 
-:: uninstall the current key 
+:: uninstalls the current key 
 echo uninstalling key: %key%
 cscript //nologo ospp.vbs /unpkey:%key%
 
